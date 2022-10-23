@@ -1,2 +1,16 @@
-package edu.utp.rumay.repository;public interface PacienteRepository {
+package edu.utp.rumay.repository;
+
+import edu.utp.rumay.enums.Genero;
+import edu.utp.rumay.model.Paciente;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface PacienteRepository extends JpaRepository<Paciente, Long> {
+    List<Paciente> findByNombres(String nombre);
+    List<Paciente> findByGenero(Genero genero);
+    List<Paciente> findByNacimiento(int nacimiento);
+    List<Paciente> findByNacimientoBetween(int nacimiento1, int nacimiento2);
 }
